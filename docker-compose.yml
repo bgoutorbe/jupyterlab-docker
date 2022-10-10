@@ -1,0 +1,19 @@
+version: '3.8'
+
+volumes:
+  jupyterlab_settings:
+    name: jupyterlab_settings
+
+services:
+  jupyterlab-py310:
+    build:
+      context: ./jupyterlab
+    image: jupyterlab-py310
+    container_name: jupyterlab-py310
+    ports:
+      - "8000:8888"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${HOME}/OneDrive - Bain:/home/jovyan/work  # workspace = my OneDrive
+      - jupyterlab_settings:/home/jovyan/.jupyter  # persist Jupyter settings in volume
+    restart: unless-stopped
