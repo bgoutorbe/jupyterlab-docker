@@ -36,5 +36,6 @@ RUN pip install --no-cache-dir \
       transformers[torch]==4.22.1
 
 RUN conda install -y geopandas==0.11.1
+RUN conda install -c anaconda pymssql==2.2.3
 
 CMD ["start-notebook.sh", "--NotebookApp.token=''", "--NotebookApp.password=''"]
